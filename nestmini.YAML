@@ -1,0 +1,16 @@
+metadata:
+  name: Anunciar Campainha QR Code
+description: Faz o Nest Mini falar apenas quando a notificação do IFTTT chegar
+
+automations:
+  starters:
+    - type: device.event.Notification
+      device: Seu Celular Novo # Nome que o celular terá no Google Home
+      # Aqui está o segredo: ele filtra pelo texto
+      where: notification.title.contains("IFTTT") and notification.body.contains("campainha")
+
+actions:
+    - type: device.command.MediaPlay
+      devices: [ "Nome do seu Nest Mini" ]
+      # Você pode usar um link de um som curto de campainha ou uma música
+      media_url: "https://www.soundjay.com/buttons/beep-01a.mp3"
